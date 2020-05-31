@@ -1,0 +1,9 @@
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/entity/Cliente.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/VendasApplication.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/entity/Produto.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/repository/ClientesRespository.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/repository/ItemPedidoRepository.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/repository/ProdutosRepository.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/entity/Pedido.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/entity/ItemPedido.java
+/home/bios/Documents/study/springboot/vendas/backend/src/main/java/br/com/grownext/domain/repository/PedidosRepository.java

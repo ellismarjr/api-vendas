@@ -1,0 +1,9 @@
+br/com/grownext/domain/entity/Pedido.class
+br/com/grownext/domain/entity/Cliente.class
+br/com/grownext/domain/entity/Produto.class
+br/com/grownext/domain/repository/ProdutosRepository.class
+br/com/grownext/domain/repository/ClientesRespository.class
+br/com/grownext/VendasApplication.class
+br/com/grownext/domain/entity/ItemPedido.class
+br/com/grownext/domain/repository/PedidosRepository.class
+br/com/grownext/domain/repository/ItemPedidoRepository.class
