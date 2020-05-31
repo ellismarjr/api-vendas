@@ -1,11 +1,28 @@
 package br.com.grownext.domain.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "produto")
 public class Produto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "descricao")
     private String descricao;
-    private BigDecimal preco_unitario;
+
+    @Column(name = "preco_unitario")
+    private BigDecimal preco;
+
 
     public Integer getId() {
         return id;
@@ -23,11 +40,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public BigDecimal getPreco_unitario() {
-        return preco_unitario;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setPreco_unitario(BigDecimal preco_unitario) {
-        this.preco_unitario = preco_unitario;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 }

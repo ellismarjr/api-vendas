@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,34 +21,12 @@ public class VendasApplication {
     public CommandLineRunner init(@Autowired ClientesRespositorio clientesRespositorio) {
         return args -> {
             System.out.println("SALVANDO CLIENTES");
-            clientesRespositorio.salvar(new Cliente("Ellismar"));
-            clientesRespositorio.salvar(new Cliente("Cliente Junior"));
+            clientesRespositorio.save(new Cliente("Fulano"));
+            clientesRespositorio.save(new Cliente("Cliente Junior"));
 
             System.out.println("LISTANDO CLIENTES");
-            List<Cliente> todosClientes = clientesRespositorio.obterTodos();
-            todosClientes.forEach(System.out::println);
-
-            System.out.println("ATUALIZANDO CLIENTES");
-            todosClientes.forEach(c -> {
-                c.setNome(c.getNome() + " atualizado");
-                clientesRespositorio.atualizar(c);
-            });
-
-            System.out.println("BUSCANDO CLIENTE POR NOME");
-            clientesRespositorio.buscarPorNome("Cli").forEach(System.out::println);
-
-            System.out.println("Deletando clientes");
-            clientesRespositorio.obterTodos().forEach(c -> {
-                clientesRespositorio.deletar(c);
-            });
-
-            todosClientes = clientesRespositorio.obterTodos();
-            if (todosClientes.isEmpty()) {
-                System.out.println("nenhum cliente encontrado");
-            } else {
-                todosClientes.forEach(System.out::println);
-            }
-
+            List<Cliente> result = clientesRespositorio.encontrarPorNome("Junior");
+            result.forEach(System.out::println);
         };
     }
 
