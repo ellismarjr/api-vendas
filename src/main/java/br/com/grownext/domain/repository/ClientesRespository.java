@@ -1,4 +1,4 @@
-package br.com.grownext.domain.repositorio;
+package br.com.grownext.domain.repository;
 
 import br.com.grownext.domain.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ClientesRespositorio extends JpaRepository<Cliente, Integer> {
+public interface ClientesRespository extends JpaRepository<Cliente, Integer> {
 
     @Query(value = "select * from cliente c where c.nome like '%:nome%' ", nativeQuery = true)
     List<Cliente> encontrarPorNome(@Param("nome") String nome);
