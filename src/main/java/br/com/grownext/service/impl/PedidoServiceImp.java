@@ -9,6 +9,7 @@ import br.com.grownext.domain.repository.ClientesRespository;
 import br.com.grownext.domain.repository.ItemPedidoRepository;
 import br.com.grownext.domain.repository.PedidosRepository;
 import br.com.grownext.domain.repository.ProdutosRepository;
+import br.com.grownext.excepetion.PedidoNaoEncontradoExpection;
 import br.com.grownext.excepetion.RegraNegocioException;
 import br.com.grownext.rest.dto.ItemPedidoDTO;
 import br.com.grownext.rest.dto.PedidoDTO;
@@ -54,6 +55,16 @@ public class PedidoServiceImp implements PedidoService {
     @Override
     public Optional<Pedido> obterPedidoCompleto(Integer id) {
         return pedidosRepository.findByIdFetchItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void atualizaStatus(Integer id, StatusPedido statusPedido) {
+        pedidosRepository.findById(id)
+                .map(pedido -> {
+                    pedido.setStatus(statusPedido);
+                    return pedidosRepository.save(pedido);
+                }).orElseThrow(PedidoNaoEncontradoExpection::new);
     }
 
     private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items) {
