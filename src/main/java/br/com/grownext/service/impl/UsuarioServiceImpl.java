@@ -2,6 +2,7 @@ package br.com.grownext.service.impl;
 
 import br.com.grownext.domain.entity.Usuario;
 import br.com.grownext.domain.repository.UsuarioRepository;
+import br.com.grownext.excepetion.SenhaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +23,16 @@ public class UsuarioServiceImpl implements UserDetailsService {
     @Transactional
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
+    }
+
+    public UserDetails autenticar(Usuario usuario) throws SenhaInvalidaException {
+        UserDetails user = loadUserByUsername(usuario.getLogin());
+        boolean senhasBatem = passwordEncoder.matches(usuario.getSenha(), user.getPassword());
+        if (senhasBatem) {
+            return user;
+        }
+
+        throw  new SenhaInvalidaException();
     }
 
     @Override
